@@ -1,22 +1,20 @@
 package java.com.battleship.players;
 
 public class HumanPlayer extends Player {
-    private Coordinate nextTarget;
 
-    public HumanPlayer(String name){
+    private final TargetingStrategy targetingStrategy;
+
+    public HumanPlayer(String name, TargetingStrategy targetingStrategy) {
         super(name);
+        this.targetingStrategy = targetingStrategy;
     }
 
-    public boolean placeShip(Ship ship, Coordinate coordinate, Orientation orentiation){
-        return getBoard().placeShip(ship,coordinate,orentiation);
-    }
-
-    public Coordinate setNextTarget(Coordinate coordinate){
-        this.nextTarget = coordinate;
+    public boolean placeShip(Ship ship, Coordinate coordinate, Orientation orientation) {
+        return getBoard().placeShip(ship, coordinate, orientation);
     }
 
     @Override
     public Coordinate chooseTarget() {
-        return nextTarget;
+        return targetingStrategy.chooseTarget();
     }
 }
