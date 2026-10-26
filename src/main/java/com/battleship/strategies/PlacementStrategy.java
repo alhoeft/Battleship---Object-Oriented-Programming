@@ -2,7 +2,7 @@ package com.battleship.strategies;
 
 import com.battleship.model.Board;
 
-public interface PlacementStrategy implements TargetingStrategy{
+public interface PlacementStrategy{
 
     @Override
     public void placeFleet(Board board, List<Ship> fleet){
