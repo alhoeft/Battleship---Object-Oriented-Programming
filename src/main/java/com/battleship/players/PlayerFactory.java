@@ -21,7 +21,7 @@ public class PlayerFactory {
     }
 
     public HumanPlayer createHuman(){
-        return new createHuman(name)
+        return new createHuman(name);
     }
 }
 
