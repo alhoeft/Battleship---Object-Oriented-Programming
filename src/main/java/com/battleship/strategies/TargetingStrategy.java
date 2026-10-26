@@ -1,4 +1,4 @@
-package java.com.battleship.PlayStrategies;
+package com.battleship.strategies;
 
 public interface TargetingStrategy{
     Coordinate chooseTarget();

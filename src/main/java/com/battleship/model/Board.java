@@ -1,6 +1,6 @@
-package java.com.battleship.model;
+package com.battleship.model;
 
-import java.com.battleship.model.Coordinate;
+import com.battleship.model.Coordinate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

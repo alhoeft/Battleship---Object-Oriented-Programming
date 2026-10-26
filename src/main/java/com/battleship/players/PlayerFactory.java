@@ -1,4 +1,4 @@
-package java.com.battleship.players;
+package com.battleship.players;
 
 import java.util.List;
 import java.util.Random;

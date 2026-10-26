@@ -1,6 +1,6 @@
-package java.com.battleship.PlayStrategies;
+package com.battleship.strategies;
 
-import java.com.battleship.model.Board;
+import com.battleship.model.Board;
 
 public interface RandomPlacement{
 
