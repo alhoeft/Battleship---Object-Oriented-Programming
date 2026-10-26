@@ -1,4 +1,4 @@
-package java.com.battleship.model;
+package com.battleship.model;
 
 public record Coordinate(int row, int col) {
     public boolean isInBounds(int size) {

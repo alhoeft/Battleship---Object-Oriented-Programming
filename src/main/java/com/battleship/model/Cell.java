@@ -1,8 +1,8 @@
-package java.com.battleship.model;
+package com.battleship.model;
 
 public class Cell {
 
-    private com.battleship.model.Ship ship;    // null if empty water
+    private Ship ship;    // null if empty water
     private boolean hit;
 
     public boolean hasShip() {

@@ -1,3 +1,4 @@
+package com.battleship.players
 
 import java.util.Random;
 

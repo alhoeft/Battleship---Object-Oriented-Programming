@@ -1,4 +1,4 @@
-package java.com.battleship.model;
+package com.battleship.model;
 
 public enum ShotResult {
     MISS,

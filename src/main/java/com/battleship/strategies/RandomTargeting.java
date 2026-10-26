@@ -1,6 +1,6 @@
-package java.com.battleship.PlayStrategies;
+package com.battleship.strategies;
 
-import java.com.battleship.PlayStrategies.TargetingStrategy;
+import com.battleship.strategies.TargetingStrategy;
 
 public class RandomTargetingStrategy implements TargetingStrategy{
     private final Random random;

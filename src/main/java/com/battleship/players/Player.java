@@ -1,8 +1,8 @@
-package java.com.battleship.players;
+package com.battleship.players;
 
-import java.com.battleship.model.Board;
-import java.com.battleship.model.Coordinate;
-import java.com.battleship.model.ShotResult;
+import com.battleship.model.Board;
+import com.battleship.model.Coordinate;
+import com.battleship.model.ShotResult;
 import java.util.Scanner;
 import java.util.Map;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package java.com.battleship.players;
+package com.battleship.players;
 
 public class HumanPlayer extends Player {
 
