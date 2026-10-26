@@ -1,8 +1,11 @@
 package com.battleship.strategies;
 
+import java.util.List;
+import java.util.Random;
+
 import com.battleship.model.Board;
 
-public interface RandomPlacement{
+public class RandomPlacement implements PlacementStrategy {
 
     private final Random random;
 
