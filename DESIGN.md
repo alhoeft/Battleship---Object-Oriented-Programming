@@ -22,7 +22,7 @@ We use three design patterns: **Strategy**, **Factory**, and **Observer**.
 
 ### 1. Strategy: bot targeting and ship placement
 
-**Classes:** `TargetingStrategy` (interface), `RandomTargeting`, `PlacementStrategy` (interface), `RandomPlacement`, `BotPlayer`
+**Classes:** `TargetingStrategy` (interface), `RandomTargeting`, `PlacementStrategy` (interface), `RandomPlacementStrategy`, `BotPlayer`
 
 **Problem it solves:** The bot needs a way to choose where to fire and where to place ships. We want to be able to change that behavior, for example by adding a smarter "hunt" bot later, without rewriting `BotPlayer` or `Game`.
 
@@ -66,7 +66,7 @@ public class BotPlayer extends Player {
 
 **How it's used:**
 - `FleetFactory.createStandardFleet()` returns the five standard ships, built from `ShipType`.
-- `PlayerFactory.createBot()` builds a `BotPlayer` with its `RandomTargeting` and `RandomPlacement` strategies, and places its fleet.
+- `PlayerFactory.createBot()` builds a `BotPlayer` with its `RandomTargeting` and `RandomPlacementStrategy` strategies, and places its fleet.
 - `GameService` asks the factory for players and never calls `new` on a strategy itself.
 
 ```java
@@ -143,7 +143,7 @@ The abstract `Player` class defines shared behavior (`hasLost()`, owning a `Boar
 
 Classes depend on interfaces, not concrete implementations:
 
-- `BotPlayer` depends on `TargetingStrategy` and `PlacementStrategy`, not on `RandomTargeting` or `RandomPlacement`.
+- `BotPlayer` depends on `TargetingStrategy` and `PlacementStrategy`, not on `RandomTargeting` or `RandomPlacementStrategy`.
 - `Game` depends on `GameEventListener`, not on a specific logger.
 - `Game` stores its current player as the abstract `Player` type.
 

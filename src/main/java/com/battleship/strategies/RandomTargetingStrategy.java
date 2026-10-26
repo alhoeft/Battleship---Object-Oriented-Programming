@@ -1,6 +1,11 @@
 package com.battleship.strategies;
 
-import com.battleship.strategies.TargetingStrategy;
+import com.battleship.model.Board;
+import com.battleship.model.Coordinate;
+import com.battleship.model.ShotResult;
+
+import java.util.Random;
+import java.util.Set;
 
 public class RandomTargetingStrategy implements TargetingStrategy{
     private final Random random;

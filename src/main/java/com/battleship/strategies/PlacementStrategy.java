@@ -1,19 +1,12 @@
 package com.battleship.strategies;
 
 import com.battleship.model.Board;
+import com.battleship.model.Coordinate;
+import com.battleship.model.Orientation;
+import com.battleship.model.Ship;
+
+import java.util.List;
 
 public interface PlacementStrategy{
-
-    @Override
-    public void placeFleet(Board board, List<Ship> fleet){
-        for(Ship ship : fleet){
-            boolean placed = false;
-
-            while(!paced) {
-                Coordinate coordinate = choosePlacementCoordinate();
-                Orientation orientation = chooseOrientations();
-                placed = board.placeShip(ship, start, orientation);
-            }
-        }
-    }
+    void placeFleet(Board board, List<Ship> fleet);
 }

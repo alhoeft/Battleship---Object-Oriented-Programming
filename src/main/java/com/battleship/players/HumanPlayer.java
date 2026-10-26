@@ -1,11 +1,18 @@
 package com.battleship.players;
 
+import com.battleship.model.Coordinate;
+import com.battleship.model.Orientation;
+import com.battleship.model.Ship;
+import com.battleship.strategies.PlacementStrategy;
+import com.battleship.strategies.TargetingStrategy;
+
 public class HumanPlayer extends Player {
 
     private final TargetingStrategy targetingStrategy;
+    private PlacementStrategy placementStrategy;
 
-    public HumanPlayer(String name, TargetingStrategy targetingStrategy) {
-        super(name);
+    public HumanPlayer(String name, TargetingStrategy targetingStrategy, PlacementStrategy placementStrategy) {
+        super(name, placementStrategy);
         this.targetingStrategy = targetingStrategy;
     }
 

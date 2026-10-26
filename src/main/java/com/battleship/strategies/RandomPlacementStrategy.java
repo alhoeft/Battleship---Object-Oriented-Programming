@@ -4,12 +4,15 @@ import java.util.List;
 import java.util.Random;
 
 import com.battleship.model.Board;
+import com.battleship.model.Coordinate;
+import com.battleship.model.Orientation;
+import com.battleship.model.Ship;
 
-public class RandomPlacement implements PlacementStrategy {
+public class RandomPlacementStrategy implements PlacementStrategy {
 
     private final Random random;
 
-    public RandomPlacement(Random random) {
+    public RandomPlacementStrategy(Random random) {
         this.random = random;
     }
 
@@ -18,11 +21,11 @@ public class RandomPlacement implements PlacementStrategy {
         for(Ship ship : fleet){
             boolean placed = false;
 
-            while(!paced) {
+            while(!placed) {
                 int row = random.nextInt(Board.SIZE);
                 int col = random.nextInt(Board.SIZE);
 
-                Coordinate coordinate = new Coordinate(row, col);
+                Coordinate coordinates = new Coordinate(row, col);
                 Orientation orientation;
 
                 if (random.nextBoolean()) {
@@ -31,7 +34,7 @@ public class RandomPlacement implements PlacementStrategy {
                     orientation = Orientation.VERTICAL;
                 }
 
-                placed = board.placeShip(ship, start, orientation);
+                placed = board.placeShip(ship, coordinates, orientation);
             }
         }
     }
