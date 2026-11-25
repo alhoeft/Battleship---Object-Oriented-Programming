@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Battleship</title>
+    <link rel="icon" href="data:,"> <!-- empty icon, so the browser doesn't log a favicon 404 -->
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header>
+    <h1>Battleship</h1>
+    <button id="new-game" type="button">New Game</button>
+</header>
+
+<main>
+    <section id="status-bar">
+        <p id="status"></p>
+        <button id="orientation" type="button" title="Shortcut: R">Horizontal</button>
+    </section>
+
+    <p id="error" role="alert" hidden></p>
+
+    <section id="game-over" hidden>
+        <h2 id="game-over-text"></h2>
+        <button id="play-again" type="button">New Game</button>
+    </section>
+
+    <section id="boards">
+        <div class="board-wrap">
+            <h2>Your fleet</h2>
+            <div id="player-board" class="board"></div>
+        </div>
+        <div class="board-wrap">
+            <h2>Enemy waters</h2>
+            <div id="enemy-board" class="board"></div>
+        </div>
+    </section>
+
+    <section id="log">
+        <h2>Battle log</h2>
+        <ol id="messages"></ol>
+    </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

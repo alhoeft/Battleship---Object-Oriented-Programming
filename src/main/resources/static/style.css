@@ -1,0 +1,229 @@
+:root {
+    --bg: #081422;
+    --panel: #0B1B2D;
+    --text: #e6edf3;
+    --muted: #8fa3b8;
+    --water: #376685;
+    --water-hover: #376685;
+    --ship: #C3CCD5;
+    --hit: #e5484d;
+    --miss: #C3CCD5;
+    --accent: #f5b942;
+    --cell: 34px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 1px solid #22384f;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    letter-spacing: 0.04em;
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 32px 40px;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#new-game,
+#play-again,
+#orientation {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #1a1a1a;
+    font-weight: 600;
+}
+
+#orientation {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid #2c4763;
+    min-width: 120px;
+}
+
+#status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 40px;
+}
+
+#status {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+#error {
+    margin: 12px 0 0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    background: rgba(229, 72, 77, 0.15);
+    border: 1px solid var(--hit);
+    color: #ffb4b6;
+}
+
+#game-over {
+    margin-top: 16px;
+    padding: 18px;
+    border-radius: 8px;
+    text-align: center;
+    background: var(--panel);
+    border: 2px solid var(--accent);
+}
+
+#game-over.lost {
+    border-color: var(--hit);
+}
+
+#game-over h2 {
+    font-size: 1.4rem;
+    color: var(--text);
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+/* [hidden] must win over the display rules above */
+[hidden] {
+    display: none !important;
+}
+
+#boards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(11, var(--cell));
+    grid-auto-rows: var(--cell);
+    gap: 2px;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--muted);
+}
+
+.cell {
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: var(--water);
+    position: relative;
+}
+
+.cell:disabled {
+    cursor: default;
+}
+
+.board.clickable .cell:not(:disabled):hover {
+    background: var(--water-hover);
+    outline: 2px solid var(--accent);
+}
+
+.cell.ship {
+    background: var(--ship);
+}
+
+.cell.hit {
+    background: var(--hit);
+}
+
+.cell.hit::after {
+    content: "✕";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+.cell.miss::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    margin: -4px 0 0 -4px;
+    border-radius: 50%;
+    background: var(--miss);
+}
+
+#log {
+    margin-top: 32px;
+}
+
+#messages {
+    list-style: none;
+    margin: 0;
+    padding: 12px 16px;
+    max-height: 200px;
+    overflow-y: auto;
+    background: var(--panel);
+    border-radius: 8px;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 0.9rem;
+}
+
+#messages:empty::before {
+    content: "No shots fired yet.";
+    color: var(--muted);
+}
+
+#messages li {
+    padding: 3px 0;
+}
+
+#messages li.sunk {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+#messages li.over {
+    color: var(--accent);
+    font-weight: 700;
+}

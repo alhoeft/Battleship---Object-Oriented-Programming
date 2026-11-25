@@ -4,6 +4,8 @@ import com.battleship.dto.FireRequest;
 import com.battleship.dto.GameStateResponse;
 import com.battleship.dto.PlaceRequest;
 import com.battleship.service.GameService;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +23,7 @@ public class GameController {
 
     private final GameService gameService;
 
+    // Constructor injection: Spring passes in the GameService bean.
     public GameController(GameService gameService) {
         this.gameService = gameService;
     }
@@ -46,5 +49,15 @@ public class GameController {
     @GetMapping("/state")
     public GameStateResponse state() {
         return gameService.getState();
+    }
+
+    /**
+     * A body Spring can't read (bad JSON, or an unknown value like
+     * "ship":"BOAT") would normally become an HTTP 400. We agreed bad moves
+     * always return 200 with the error field filled in, so handle it here.
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public GameStateResponse badRequestBody(HttpMessageNotReadableException e) {
+        return gameService.getState().withError("Couldn't read that move.");
     }
 }
